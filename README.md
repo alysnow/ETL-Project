@@ -1,9 +1,9 @@
 # English Premier League (EPL) ETL Project
 Week 13 - Group 7
 
-ENTER TEXT HERE
-
 ![epl_dreamteam_cover](images/epl_dreamteam_cover.png)
+
+This Project aims to Utilise EPL Player stats to build an EPL Dream team. By gathering multiple dataset statistics, the objective is to analyse, dissect and extract the important data to be readily available for useful application.
 
 
 ## Assignment structure
@@ -12,21 +12,31 @@ ETL-Project
 | 
 |__ images/          
 |   |__ epl_dreamteam_cover
+|   |__ ERDModel.png
 |   |__ ETL.PNG
 |   |__ ETL_NewParadigm.PNG
 |
 |__ Resources/
-|   |__ EPL_QuickDBD.sql
-|   |__ pl_15-16.csv
-|   |__ pl_16-17.csv
-|   |__ pl_17-18.csv
-|   |__ pl_18-19.csv
+|   |__ OriginalData/
+|      |__ pl_15-16.csv
+|      |__ pl_16-17.csv
+|      |__ pl_17-18.csv
+|      |__ pl_18-19.csv
+|   |__ defender_average.csv
+|   |__ forward_average.csv
+|   |__ goalkeeper_average.csv
+|   |__ midfielder_average.csv
 |   |__ Player_complete_nationality.csv
 |   |__ Player_Stats.csv
+|   |__ player_stats_complete.csv
+|
+|__ SQL/
+|   |__ epl_table_schema.sql
 |
 |__ .gitignore 
 |__ EPL_csv_cleanup.ipynb
 |__ EPL_html_GetRequest.ipynb
+|__ Project Report - Group 7.docx
 |__ README - Project Guidelines.md
 |__ README - Project Proposal.md
 |__ README.md
@@ -40,6 +50,7 @@ ETL-Project
 # Dependencies and Setup
 
 from bs4 import BeautifulSoup
+from sqlalchemy import create_engine
 
 import pandas as pd
 import numpy as np
@@ -60,12 +71,17 @@ import requests
 
 |No|Source|Link|
 |-|-|-|
-|1|pl_15-16.csv|https://github.com/alysnow/sql-challenge/blob/main/data/departments.csv|
-|2|pl_16-17.csv|https://github.com/alysnow/sql-challenge/blob/main/data/dept_emp.csv|
-|3|pl_17-18.csv|https://github.com/alysnow/sql-challenge/blob/main/data/dept_manager.csv|
-|4|pl_18-19.csv|https://github.com/alysnow/sql-challenge/blob/main/data/employees.csv|
-|5|Player_complete_nationality.csv|https://github.com/alysnow/sql-challenge/blob/main/data/salaries.csv|
-|6|Player_Stats.csv|https://github.com/alysnow/sql-challenge/blob/main/data/titles.csv|
+|1|pl_15-16.csv|https://github.com/alysnow/ETL-Project/blob/main/Resources/OriginalData/pl_15-16.csv|
+|2|pl_16-17.csv|https://github.com/alysnow/ETL-Project/blob/main/Resources/OriginalData/pl_16-17.csv|
+|3|pl_17-18.csv|https://github.com/alysnow/ETL-Project/blob/main/Resources/OriginalData/pl_17-18.csv|
+|4|pl_18-19.csv|https://github.com/alysnow/ETL-Project/blob/main/Resources/OriginalData/pl_18-19.csv|
+|5|Player_Stats.csv|https://github.com/alysnow/ETL-Project/blob/main/Resources/Player_Stats.csv|
+|6|Player_complete_nationality.csv|https://github.com/alysnow/ETL-Project/blob/main/Resources/Player_complete_nationality.csv|
+|7|defender_average.csv|https://github.com/alysnow/ETL-Project/blob/main/Resources/defender_average.csv|
+|8|forward_average.csv|https://github.com/alysnow/ETL-Project/blob/main/Resources/forward_average.csv|
+|9|goalkeeper_average.csv|https://github.com/alysnow/ETL-Project/blob/main/Resources/goalkeeper_average.csv|
+|10|midfielder_average.csv|https://github.com/alysnow/ETL-Project/blob/main/Resources/midfielder_average.csv|
+|11|player_stats_complete.csv|https://github.com/alysnow/ETL-Project/blob/main/Resources/player_stats_complete.csv|
 
 
 ## ETL Task Breakdown:
@@ -75,54 +91,22 @@ import requests
 1. Research
 2. Acquire datasets
 3. Clean datasets
-    * Excel
-    * Jupyter notebook
+    1. Jupyter notebook
 4. Create database SQL
-    * Create tables
-    * Create a view to join tables
-    
-
-## Extract:
+    1. Create tables
+    2. Create a view to join tables
 
 
-### Data:
+## Entity Relationship Model:
 
-![chart](images/filenamehere.png)
+![RDModel.png](images/https://github.com/alysnow/ETL-Project/blob/main/images/ERDModel.png)
 
+The ERD model was generated using the QuickDBD tool in the following link; http://www.quickdatabasediagrams.com
 
-## Transform:
+## Report
 
-![chart](images/filenamehere.png)
+A copy of the Project report is located in the following link; https://github.com/alysnow/ETL-Project/blob/main/Project%20Report%20-%20Group%207.docx
 
-
-## Load:
-
-
-### Entity Relationship Model:
-
-Inspect the CSVs and sketch out an ERD of the tables.
-
-![chart](images/filenamehere.png)
-
-The ERD was generated using the QuickDBD tool in the following link; http://www.quickdatabasediagrams.com
-
-### Data Engineering:
-
-Utilizing the QuickDBD tool to generate the ERD, the table schema for each of the CSV files is assembled including the data types, primary keys, foreign keys, and any other constraints. All csv files are imported into the subsequent SQL table. A copy of the table schema is located in the following link;
-
-https://github.com/alysnow/sql-challenge/blob/main/EmployeeSQL/table_schema.sql
-
-
-### Data Analysis:
-
-![chart](images/filenamehere.png)
-
-
-### Report:
-
-![chart](images/filenamehere.png)
-
-    
 ## Contributors
 - [@Alysha](https://github.com/alysnow)
 - [@Ernest](https://github.com/KenyanBoy)
